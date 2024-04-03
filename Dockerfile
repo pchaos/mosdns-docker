@@ -4,6 +4,7 @@ ARG TAG
 ARG REPOSITORY
 
 WORKDIR /root
+SHELL ["/bin/bash", "-c"]
 RUN dnf install -y git \
   && git clone https://github.com/${REPOSITORY} mosdns \
   && cd ./mosdns \
