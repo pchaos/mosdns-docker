@@ -27,7 +27,8 @@ COPY scripts /scripts
 COPY config/* /etc/mosdns/
 
 SHELL ["/bin/bash", "-c"]
-RUN apt-get install -y ca-certificates wget cronie tzdata
+RUN apt-get update && apt-get install -y ca-certificates wget cronie tzdata
+
 RUN apt-get install -y ca-certificates wget cronie tzdata \
   && chmod a+x /scripts/* \
   && sed '1s/sh/bash/g' *.sh \
