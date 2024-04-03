@@ -4,7 +4,7 @@ ARG TAG
 ARG REPOSITORY
 
 WORKDIR /root
-RUN dnf install -y git \
+RUN apk add --update git \
   && git clone https://github.com/${REPOSITORY} mosdns \
   && cd ./mosdns \
   && git fetch --all --tags \
