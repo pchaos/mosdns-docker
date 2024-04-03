@@ -36,7 +36,7 @@ jobs:
         with:
           build-args: |
             TAG=${{ env.TAG }}
-            REPOSITORY=p19992003 w/mosdns
+            REPOSITORY=IrineSistiana/mosdns
           # platforms: linux/amd64,linux/arm/v7,linux/arm64,linux/ppc64le
           # platforms: linux/amd64,linux/arm/v7,linux/arm64
             # for almalinux
