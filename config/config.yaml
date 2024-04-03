@@ -93,7 +93,7 @@ plugins:
           - qname &./geosite_cn.txt
         exec: goto local_seq
       - matches:
-          - qname &./geosite_geolocation-!cn.txt
+          - qname &./geosite_geolocation-not-cn.txt
         exec: goto remote_seq
 
       - exec: $fallback_ip
