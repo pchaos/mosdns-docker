@@ -26,7 +26,7 @@ COPY --from=builder /root/mosdns/mosdns /usr/bin/
 COPY scripts /scripts
 COPY config/* /etc/mosdns/
 
-RUN dnf install -y ca-certificates wget cronie tzdata \
+RUN apt-get install -y ca-certificates wget cronie tzdata \
   && chmod a+x /scripts/* \
   && /scripts/update.sh
 
