@@ -12,7 +12,7 @@ RUN dnf install -y git \
   && go build -ldflags "-s -w -X main.version=${TAG}" -trimpath -o mosdns
 
 # FROM --platform=${TARGETPLATFORM} fedora:latest
-FROM --platform=${TARGETPLATFORM} almalinux:latest
+FROM --platform=${TARGETPLATFORM} rockylinux:latest
 LABEL maintainer="fordes123 <github.com/fordes123>"
 
 ENV TZ=Asia/Shanghai \
