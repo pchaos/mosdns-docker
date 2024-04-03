@@ -4,8 +4,9 @@ ARG TAG
 ARG REPOSITORY
 
 WORKDIR /root
-RUN apt-get update \
-  && apt-get install -y git \
+SHELL ["/bin/bash", "-c"]
+
+RUN apt-get install -y git \
   && git clone https://github.com/${REPOSITORY} mosdns \
   && cd ./mosdns \
   && git fetch --all --tags \
