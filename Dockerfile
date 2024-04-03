@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} golang:alpine as builder
+FROM --platform=${TARGETPLATFORM} golang:bullseye as builder
 ARG CGO_ENABLED=0
 ARG TAG
 ARG REPOSITORY
