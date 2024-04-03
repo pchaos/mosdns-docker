@@ -29,6 +29,7 @@ COPY config/* /etc/mosdns/
 SHELL ["/bin/bash", "-c"]
 RUN apt-get install -y ca-certificates wget cronie tzdata \
   && chmod a+x /scripts/* \
+  && sed '1s/sh/bash/g' *.sh \
   && /scripts/update.sh
 
 VOLUME /etc/mosdns
