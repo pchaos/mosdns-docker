@@ -12,7 +12,7 @@ RUN dnf install -y git \
   && go build -ldflags "-s -w -X main.version=${TAG}" -trimpath -o mosdns
 
 # FROM --platform=${TARGETPLATFORM} fedora:latest
-FROM --platform=${TARGETPLATFORM} fedora:38
+FROM --platform=${TARGETPLATFORM} fedora:latest
 LABEL maintainer="fordes123 <github.com/fordes123>"
 
 ENV TZ=Asia/Shanghai \
