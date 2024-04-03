@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} golang:fedora:38 as builder
+FROM --platform=${TARGETPLATFORM} golang:latest as builder
 ARG CGO_ENABLED=0
 ARG TAG
 ARG REPOSITORY
