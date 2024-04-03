@@ -1,10 +1,9 @@
-FROM --platform=${TARGETPLATFORM} golang:latest as builder
+FROM --platform=${TARGETPLATFORM} golang:alpine as builder
 ARG CGO_ENABLED=0
 ARG TAG
 ARG REPOSITORY
 
 WORKDIR /root
-SHELL ["/bin/bash", "-c"]
 RUN dnf install -y git \
   && git clone https://github.com/${REPOSITORY} mosdns \
   && cd ./mosdns \
