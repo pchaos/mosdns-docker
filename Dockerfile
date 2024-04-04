@@ -14,13 +14,15 @@ RUN apt-get install -y git \
   && go build -ldflags "-s -w -X main.version=${TAG}" -trimpath -o mosdns
 
 # FROM --platform=${TARGETPLATFORM} fedora:latest
-FROM --platform=${TARGETPLATFORM} ubuntu:22.04
+# FROM --platform=${TARGETPLATFORM} ubuntu:22.04
+FROM --platform=${TARGETPLATFORM} ubuntu:latest
 LABEL maintainer="fordes123 <github.com/fordes123>"
 
 ENV TZ=Asia/Shanghai \
   CRON="0 0 */7 * *"
 
-USER root
+# USER root
+USER 0
 WORKDIR /etc/mosdns
 COPY --from=builder /root/mosdns/mosdns /usr/bin/
 COPY scripts /scripts
@@ -30,7 +32,7 @@ SHELL ["/bin/bash", "-c"]
 # RUN apt-get update && apt-get install -y ca-certificates wget cronie tzdata
 
 # RUN sudo bash -c " apt-get install -y ca-certificates wget cron tzdata \
-RUN apt-get install -y ca-certificates wget cron tzdata 
+RUN echo "apt-get install " && apt-get install -y ca-certificates wget cron tzdata 
 # && sudo chmod a+x /scripts/* \
 # && sudo sed '1s/sh/bash/g' /scripts/*.sh \
 # && sudo /scripts/update.sh
