@@ -19,6 +19,11 @@ jobs:
         run: |
           echo "TAG=$(cat tag)" >> $GITHUB_ENV
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v4
+        with:
+          detached: true
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
