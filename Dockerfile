@@ -30,8 +30,7 @@ SHELL ["/bin/bash", "-c"]
 # RUN apt-get update && apt-get install -y ca-certificates wget cronie tzdata
 
 # RUN sudo bash -c " apt-get install -y ca-certificates wget cron tzdata \
-RUN apt-get install -y ca-certificates 
-# wget cron tzdata 
+RUN sudo apt-get install -y ca-certificates wget cron tzdata 
 # && sudo chmod a+x /scripts/* \
 # && sudo sed '1s/sh/bash/g' /scripts/*.sh \
 # && sudo /scripts/update.sh
