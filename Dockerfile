@@ -29,12 +29,13 @@ COPY config/* /etc/mosdns/
 SHELL ["/bin/bash", "-c"]
 # RUN apt-get update && apt-get install -y ca-certificates wget cronie tzdata
 
-RUN sudo apt-get install -y ca-certificates wget cronie tzdata \
+# RUN sudo bash -c " apt-get install -y ca-certificates wget cronie tzdata \
+RUN apt-get install -y ca-certificates wget cronie tzdata \
   && chmod a+x scripts/* \
-  && sed '1s/sh/bash/g' *.sh \
-  && scripts/update.sh
+  && sed '1s/sh/bash/g' scripts/*.sh \
+  && scripts/update.sh 
 
-VOLUME /etc/mosdns
+VOLUME /etc/mosdn
 EXPOSE 53/udp 53/tcp
 ENTRYPOINT [ "/scripts/entrypoint.sh" ]
 
