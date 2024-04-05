@@ -23,7 +23,20 @@ COPY --from=builder /root/mosdns/mosdns /usr/bin/
 COPY scripts /scripts
 COPY config/* /etc/mosdns/
 
-RUN apk add --no-cache ca-certificates wget dcron tzdata bash curl systemd \
+RUN apk add --no-cache ca-certificates wget dcron tzdata bash curl git \
+  && cd /tmp && git clone https://github.com/systemd/systemd \
+  && echo "unicode=\"YES\"" >> /etc/rc.conf && \
+  apk add --no-cache --virtual .build_deps \
+  autoconf file g++ gcc libc-dev make pkgconf python3 ninja \
+  util-linux pciutils usbutils coreutils binutils findutils grep \
+  build-base gcc abuild binutils binutils-doc gcc-doc gperf libcap libcap-dev \
+  valgrind-dev \
+  && \
+  pip3 install meson
+
+RUN cd /tmp/systemd && \
+  meson build && \
+  ninja build \
   && apk add systemd alpine-sdk automake m4 autoconf libtool fuse fuse-dev linux-vanilla-dev linux-headers libnih-dev linux-pam-dev \
   && chmod a+x /scripts/* \
   && /scripts/update.sh \
