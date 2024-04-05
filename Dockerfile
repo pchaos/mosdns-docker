@@ -23,7 +23,7 @@ COPY --from=builder /root/mosdns/mosdns /usr/bin/
 COPY scripts /scripts
 COPY config/* /etc/mosdns/
 
-RUN apk add --no-cache ca-certificates wget dcron tzdata bash curl git py3-pip \
+RUN apk add --no-cache ca-certificates wget dcron tzdata bash curl git \
   && cd /tmp && git clone https://github.com/systemd/systemd \
   && echo "unicode=\"YES\"" >> /etc/rc.conf && \
   apk add --no-cache --virtual .build_deps \
@@ -32,7 +32,7 @@ RUN apk add --no-cache ca-certificates wget dcron tzdata bash curl git py3-pip \
   build-base gcc abuild binutils binutils-doc gcc-doc gperf libcap libcap-dev \
   valgrind-dev \
   && \
-  pip3 install meson
+  pip install meson
 
 RUN cd /tmp/systemd && \
   meson build && \
