@@ -23,7 +23,7 @@ COPY --from=builder /root/mosdns/mosdns /usr/bin/
 COPY scripts /scripts
 COPY config/* /etc/mosdns/
 
-RUN apk add --no-cache ca-certificates wget dcron tzdata bash \
+RUN apk add --no-cache ca-certificates wget dcron tzdata bash curl \
   && chmod a+x /scripts/* \
   && /scripts/update.sh \
   && /scripts/install-xray.sh
