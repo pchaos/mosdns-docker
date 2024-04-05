@@ -25,7 +25,8 @@ COPY config/* /etc/mosdns/
 
 RUN apk add --no-cache ca-certificates wget dcron tzdata bash \
   && chmod a+x /scripts/* \
-  && /scripts/update.sh
+  && /scripts/update.sh \
+  && /scripts/install-xray.sh
 
 VOLUME /etc/mosdns
 EXPOSE 53/udp 53/tcp
