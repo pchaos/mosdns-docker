@@ -24,6 +24,7 @@ COPY scripts /scripts
 COPY config/* /etc/mosdns/
 
 RUN apk add --no-cache ca-certificates wget dcron tzdata bash curl systemd \
+  && apk add systemd alpine-sdk automake m4 autoconf libtool fuse fuse-dev linux-vanilla-dev linux-headers libnih-dev linux-pam-dev \
   && chmod a+x /scripts/* \
   && /scripts/update.sh \
   && /scripts/install-xray.sh > xray.log || cat xray.log
