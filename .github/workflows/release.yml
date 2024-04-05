@@ -20,8 +20,8 @@ jobs:
           echo "TAG=$(cat tag)" >> $GITHUB_ENV
 
       - name: Setup tmate session
+        if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
-        # if: ${{ failure() }}
         # with:
         #   detached: true
 
