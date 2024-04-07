@@ -38,7 +38,7 @@ jobs:
         run: |
           VERSION=${{ github.event.inputs.version }}
           IMAGE_NAME=xray
-          TAGS="p199920003/${IMAGE_NAME}:${VERSION},p199920003/${IMAGE_NAME}:latest"
+          TAGS="p19992003/${IMAGE_NAME}:${VERSION},p19992003/${IMAGE_NAME}:latest"
           echo "tags:${TAGS} version:${VERSION}"
           echo "build_args=VERSION=${VERSION}" >> $GITHUB_OUTPUT
           echo "image-name=${IMAGE_NAME}" >> $GITHUB_OUTPUT
