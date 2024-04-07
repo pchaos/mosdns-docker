@@ -32,16 +32,18 @@ jobs:
       - run: echo Hello xray world! 
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Prepare
         id: prepare
         run: |
           VERSION=${{ github.event.inputs.version }}
           IMAGE_NAME=xray
-          TAGS="gists/${IMAGE_NAME}:${VERSION},gists/${IMAGE_NAME}:latest"
+          TAGS="p199920003/${IMAGE_NAME}:${VERSION},p199920003/${IMAGE_NAME}:latest"
           echo "tags:${TAGS} version:${VERSION}"
           echo "build_args=VERSION=${VERSION}" >> $GITHUB_OUTPUT
           echo "image-name=${IMAGE_NAME}" >> $GITHUB_OUTPUT
           echo "tags=${TAGS}" >> $GITHUB_OUTPUT
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
