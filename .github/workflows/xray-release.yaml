@@ -1,8 +1,9 @@
+name: "xray release"
 run-name: "xray release"
 on:
   push:
     paths:
-      - "tag"
+      - "xray/tag"
       - "xray/Dockerfile"
       - ".github/workflows/xray-release.yaml"
 
@@ -24,7 +25,8 @@ on:
 
 jobs:
   test:
-    runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
+    # runs-on: [self-hosted, "${{ inputs.chosen-os }}"]
+    runs-on: ubuntu-latest
 
     steps:
       - run: echo Hello xray world!
