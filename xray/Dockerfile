@@ -26,6 +26,7 @@ RUN set -xe && \
 
 # FROM alpine:3.19
 FROM --platform=${TARGETPLATFORM} ubuntu:latest
+
 RUN mkdir /scripts && \
   mkdir -p /var/log/xray && \
   mkdir -p /usr/local/etc/xray && \
