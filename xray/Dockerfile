@@ -30,6 +30,7 @@ RUN mkdir /scripts && \
   mkdir -p /var/log/xray && \
   mkdir -p /usr/local/etc/xray && \
   mkdir -p /usr/local/etc/hysteria
+
 COPY scripts /scripts
 
 RUN apk-get install --no-cache ca-certificates
