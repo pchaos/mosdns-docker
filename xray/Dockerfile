@@ -26,13 +26,13 @@ RUN set -xe && \
 
 # FROM alpine:3.19
 FROM --platform=${TARGETPLATFORM} ubuntu:latest
-
-COPY scripts /scripts
-
-RUN apk-get install --no-cache ca-certificates && \
+RUN mkdir /scripts && \
   mkdir -p /var/log/xray && \
   mkdir -p /usr/local/etc/xray && \
   mkdir -p /usr/local/etc/hysteria
+COPY scripts /scripts
+
+RUN apk-get install --no-cache ca-certificates
 
 
 COPY --from=builder /xray /usr/bin/
