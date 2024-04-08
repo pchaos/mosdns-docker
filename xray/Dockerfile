@@ -27,10 +27,11 @@ RUN set -xe && \
 # FROM alpine:3.19
 FROM --platform=${TARGETPLATFORM} ubuntu:latest
 
-RUN mkdir /scripts && \
+RUN mkdir  -p /scripts && \
   mkdir -p /var/log/xray && \
   mkdir -p /usr/local/etc/xray && \
   mkdir -p /usr/local/etc/hysteria
+RUN pwd
 
 COPY scripts /scripts
 
