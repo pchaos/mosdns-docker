@@ -27,6 +27,7 @@ RUN set -xe && \
 # FROM alpine:3.19
 FROM --platform=${TARGETPLATFORM} ubuntu:latest
 
+RUN apt-get update && aget install --no-cache ca-certificates
 RUN mkdir  -p /scripts && \
   mkdir -p /var/log/xray && \
   mkdir -p /usr/local/etc/xray && \
@@ -35,7 +36,6 @@ RUN pwd >test.log && ls -l &&  cat test.log
 
 COPY scripts /scripts
 
-RUN apk-get install --no-cache ca-certificates
 
 
 COPY --from=builder /xray /usr/bin/
